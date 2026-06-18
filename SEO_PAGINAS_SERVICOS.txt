@@ -1,0 +1,15 @@
+PÁGINAS DE SEO CRIADAS
+
+Foram adicionadas páginas específicas para fortalecer buscas locais e de serviço:
+
+1. /projetos-residenciais-goiania.html
+2. /interiores-goiania.html
+3. /arquitetura-comercial-goiania.html
+4. /fachadas-residenciais-goiania.html
+5. /consultorios-clinicas-goiania.html
+
+Após publicar no GitHub:
+- confirme que cada URL abre no navegador;
+- reenvie https://arquitetorenan.com/sitemap.xml no Google Search Console;
+- inspecione e solicite indexação das 5 novas URLs;
+- acompanhe em Indexação > Páginas nos próximos dias.
