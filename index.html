@@ -3,16 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Renan Almeida Arquitetura | Projetos residenciais e comerciais em Goiânia</title>
-  <meta name="description" content="Renan Almeida Arquitetura desenvolve projetos residenciais, comerciais e de interiores em Goiânia, com sobriedade, materialidade natural, luz e sofisticação discreta.">
+  <title>Arquiteto em Goiânia | Renan Almeida Arquitetura</title>
+  <meta name="description" content="Arquiteto em Goiânia para projetos residenciais, interiores, fachadas e arquitetura comercial. Projetos com sobriedade, luz natural e sofisticação discreta.">
   <meta name="theme-color" content="#f2ece3">
   <link rel="canonical" href="https://arquitetorenan.com/">
-  <meta property="og:title" content="Renan Almeida Arquitetura">
-  <meta property="og:description" content="Arquitetura residencial e comercial com sobriedade, materialidade e sofisticação discreta.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Renan Almeida Arquitetura">
+  <meta name="geo.region" content="BR-GO">
+  <meta name="geo.placename" content="Goiânia">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Renan Almeida Arquitetura">
+  <meta property="og:title" content="Arquiteto em Goiânia | Renan Almeida Arquitetura">
+  <meta property="og:description" content="Projetos residenciais, interiores, fachadas e arquitetura comercial em Goiânia, com sobriedade, materialidade natural e sofisticação discreta.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arquitetorenan.com/">
   <meta property="og:image" content="https://arquitetorenan.com/assets/og-image.jpg">
+  <meta property="og:image:alt" content="Projeto residencial com piscina do escritório Renan Almeida Arquitetura">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arquiteto em Goiânia | Renan Almeida Arquitetura">
+  <meta name="twitter:description" content="Projetos residenciais, interiores, fachadas e arquitetura comercial em Goiânia.">
+  <meta name="twitter:image" content="https://arquitetorenan.com/assets/og-image.jpg">
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preload" as="image" href="assets/img/hero.webp" imagesrcset="assets/img/hero.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,18 +32,79 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Architect",
-    "name": "Renan Almeida Arquitetura",
-    "url": "https://arquitetorenan.com/",
-    "sameAs": ["https://www.instagram.com/arq.renanalmeida/"],
-    "telephone": "+55 62 98209-2000",
-    "areaServed": "Goiânia e região",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Goiânia",
-      "addressRegion": "GO",
-      "addressCountry": "BR"
-    }
+    "@graph": [
+      {
+        "@type": [
+          "LocalBusiness",
+          "ProfessionalService"
+        ],
+        "@id": "https://arquitetorenan.com/#escritorio",
+        "name": "Renan Almeida Arquitetura",
+        "alternateName": "Renan Almeida Arquitetura e Interiores",
+        "url": "https://arquitetorenan.com/",
+        "logo": "https://arquitetorenan.com/assets/logo-mark.png",
+        "image": "https://arquitetorenan.com/assets/og-image.jpg",
+        "description": "Escritório de arquitetura em Goiânia especializado em projetos residenciais, interiores, fachadas e arquitetura comercial com sobriedade, materialidade natural e sofisticação discreta.",
+        "telephone": "+55-62-98209-2000",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Goiânia",
+          "addressRegion": "GO",
+          "addressCountry": "BR"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Goiânia"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Goiás"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/arq.renanalmeida/"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Renan Pereira",
+          "jobTitle": "Arquiteto"
+        },
+        "knowsAbout": [
+          "Projeto arquitetônico residencial",
+          "Interiores",
+          "Fachadas residenciais",
+          "Arquitetura comercial",
+          "Consultórios",
+          "Aprovação e regularização de imóveis"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://arquitetorenan.com/#website",
+        "url": "https://arquitetorenan.com/",
+        "name": "Renan Almeida Arquitetura",
+        "inLanguage": "pt-BR",
+        "publisher": {
+          "@id": "https://arquitetorenan.com/#escritorio"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://arquitetorenan.com/#home",
+        "url": "https://arquitetorenan.com/",
+        "name": "Arquiteto em Goiânia | Renan Almeida Arquitetura",
+        "description": "Projetos residenciais, interiores, fachadas e arquitetura comercial em Goiânia.",
+        "isPartOf": {
+          "@id": "https://arquitetorenan.com/#website"
+        },
+        "about": {
+          "@id": "https://arquitetorenan.com/#escritorio"
+        },
+        "inLanguage": "pt-BR"
+      }
+    ]
   }
   </script>
 </head>
@@ -79,12 +152,12 @@
     <!-- HERO -->
     <section id="topo" class="hero" aria-label="Apresentação">
       <div class="hero-media">
-        <img src="assets/img/hero.webp" alt="Vista aérea de residência com piscina e área externa em execução" width="1152" height="2048">
+        <img src="assets/img/hero.webp" alt="Vista aérea de casa com piscina em projeto residencial do Renan Almeida Arquitetura" width="1152" height="2048" fetchpriority="high">
       </div>
       <div class="hero-content">
-        <p class="eyebrow">Arquitetura residencial e comercial · Goiânia</p>
+        <p class="eyebrow">Arquiteto em Goiânia · residencial e comercial</p>
         <h1>Arquitetura<br>com matéria<br>e luz.</h1>
-        <p class="hero-text">Projetos autorais para casas, interiores e ambientes comerciais — com proporção, materialidade natural e sofisticação discreta.</p>
+        <p class="hero-text">Projetos residenciais, interiores, fachadas e ambientes comerciais em Goiânia — com proporção, materialidade natural e sofisticação discreta.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://wa.me/5562982092000?text=Ol%C3%A1%2C%20Renan.%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">Falar com o arquiteto</a>
           <a class="btn btn-secondary" href="#projetos">Ver projetos</a>
@@ -119,8 +192,8 @@
           </div>
         </div>
         <div class="intro-copy reveal reveal-delay-1">
-          <p>A arquitetura do escritório busca uma elegância silenciosa: volumes claros, materiais naturais, luz bem conduzida e detalhes construtivos que qualificam o uso diário.</p>
-          <p>O resultado são espaços com ordem, conforto e permanência — seja em uma casa, em um consultório, em uma sede corporativa ou em uma reforma pontual.</p>
+          <p>Como escritório de arquitetura em Goiânia, o Renan Almeida Arquitetura busca uma elegância silenciosa: volumes claros, materiais naturais, luz bem conduzida e detalhes construtivos que qualificam o uso diário.</p>
+          <p>O resultado são espaços com ordem, conforto e permanência — seja em uma casa, em uma reforma, em um consultório, em uma sede corporativa ou em uma fachada residencial.</p>
         </div>
       </div>
     </section>
@@ -222,7 +295,7 @@
         <div class="section-head inverted reveal">
           <div>
             <p class="eyebrow">Serviços</p>
-            <h2>Do conceito à orientação de execução.</h2>
+            <h2>Projetos de arquitetura para morar, trabalhar e receber.</h2>
           </div>
         </div>
         <div class="service-grid">
@@ -491,8 +564,8 @@
         </figure>
         <div class="about-text reveal reveal-delay-1">
           <p class="eyebrow">Sobre</p>
-          <h2>Renan Almeida Arquitetura</h2>
-          <p>Olá, sou Renan Pereira, arquiteto e fundador do escritório Renan Almeida Arquitetura.</p>
+          <h2>Renan Almeida, arquiteto em Goiânia</h2>
+          <p>Olá, sou Renan Pereira, arquiteto em Goiânia e fundador do escritório Renan Almeida Arquitetura.</p>
           <p>Sou formado pela PUC Goiás e, desde 2015, atuo com projetos e execução de obras residenciais e comerciais em Goiânia e região.</p>
           <p>Meu trabalho parte da leitura do lugar, do modo de viver do cliente e da busca por soluções arquitetônicas claras, proporcionais e duráveis. A intenção é desenvolver projetos com identidade, conforto e sofisticação discreta, onde planta, luz, materiais, marcenaria e obra sejam pensados como partes de um mesmo raciocínio.</p>
           <p>Mais do que seguir um estilo, o escritório busca transformar necessidades reais em espaços bem resolvidos, acolhedores e visualmente consistentes.</p>

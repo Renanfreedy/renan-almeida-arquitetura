@@ -1,0 +1,32 @@
+SEO_CHECKLIST — RENAN ALMEIDA ARQUITETURA
+
+1. Atualizar o site no GitHub
+- Abra o GitHub Desktop.
+- Clique em Show in Explorer.
+- Copie todos os arquivos desta pasta para dentro da pasta do repositório renan-almeida-arquitetura.
+- Substitua os arquivos existentes.
+- No GitHub Desktop, faça commit com a mensagem: Ajustes de SEO.
+- Clique em Push origin.
+
+2. Conferir se o site carregou
+- Acesse https://arquitetorenan.com
+- Acesse https://arquitetorenan.com/galeria.html
+- Teste também https://www.arquitetorenan.com
+
+3. Google Search Console
+- Entre no Google Search Console.
+- Adicione a propriedade arquitetorenan.com.
+- Verifique a propriedade conforme a opção escolhida pelo Google.
+- Envie o sitemap: https://arquitetorenan.com/sitemap.xml
+- Peça indexação da página inicial e da galeria.
+
+4. Google Meu Negócio / Perfil da Empresa
+- Atualize o site oficial para https://arquitetorenan.com
+- Use o mesmo telefone e nome: Renan Almeida Arquitetura.
+
+5. Próximas páginas recomendadas para ranquear melhor
+- /projetos-residenciais-goiania.html
+- /arquitetura-comercial-goiania.html
+- /interiores-goiania.html
+- /fachadas-residenciais-goiania.html
+- /consultorios-clinicas-goiania.html
