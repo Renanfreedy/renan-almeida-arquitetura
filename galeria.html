@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeria de Projetos — Renan Almeida Arquitetura</title>
+  <meta name="description" content="Portfólio completo de projetos residenciais, comerciais e de interiores do escritório Renan Almeida Arquitetura em Goiânia.">
+  <link rel="canonical" href="https://arquitetorenan.com/galeria">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== TOKENS ===== */
+    :root {
+      --bg: #f2ece3;
+      --bg-warm: #ece4d8;
+      --paper: #faf7f2;
+      --ink: #1a1714;
+      --ink-mid: #3e3730;
+      --muted: #7a6e65;
+      --line: rgba(26,23,20,.13);
+      --deep: #1c1712;
+      --accent: #a07e5a;
+      --accent-light: #c9a882;
+      --rail: 112px;
+      --easing: cubic-bezier(0.25,0,0.15,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; padding: 0; }
+
+    /* ===== SIDE RAIL ===== */
+    .side-rail {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--rail);
+      z-index: 80;
+      border-right: 1px solid var(--line);
+      background: rgba(242,236,227,.91);
+      backdrop-filter: blur(20px) saturate(1.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 16px;
+    }
+    .rail-brand { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .rail-brand img { width: 44px; height: 66px; object-fit: contain; }
+    .rail-brand span { font-size: 10px; text-transform: uppercase; letter-spacing: .15em; font-weight: 700; line-height: 1.4; color: var(--ink); }
+    .rail-back {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rail-back:hover { color: var(--ink); }
+    .rail-back::before {
+      content: '←';
+      font-size: 14px;
+      writing-mode: horizontal-tb;
+      transform: rotate(90deg);
+    }
+    .rail-cta {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--ink);
+      border: 1px solid rgba(26,23,20,.22);
+      padding: 16px 8px;
+      border-radius: 999px;
+      transition: background .3s;
+    }
+    .rail-cta:hover { background: rgba(255,255,255,.4); }
+
+    /* ===== MOBILE HEADER ===== */
+    .mobile-header { display: none; }
+
+    /* ===== MAIN ===== */
+    main { margin-left: var(--rail); }
+    .container { width: min(1300px, calc(100% - 56px)); margin-inline: auto; }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      padding: 90px 0 64px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(42px, 6vw, 88px);
+      font-weight: 400;
+      letter-spacing: -.025em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 0;
+    }
+    .page-header p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-top: 20px;
+      max-width: 520px;
+    }
+
+    /* ===== FILTER BAR ===== */
+    .filter-bar {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--muted);
+      margin-right: 8px;
+    }
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: transparent;
+      transition: background .25s, color .25s, border-color .25s;
+    }
+    .filter-btn:hover { background: rgba(26,23,20,.05); color: var(--ink); }
+    .filter-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+    /* ===== GALLERY GRID ===== */
+    .gallery-section { padding: 56px 0 120px; }
+
+    /* Project group */
+    .project-group { margin-bottom: 80px; }
+    .project-group[hidden] { display: none; }
+    .group-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+    .group-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .group-meta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .group-count {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin-left: auto;
+    }
+    .gallery-subhead {
+      margin: 28px 0 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .gallery-subhead:first-of-type { margin-top: 0; }
+    .gallery-subhead + .image-grid { margin-bottom: 30px; }
+
+    /* Masonry-style image grid */
+    .image-grid {
+      display: grid;
+      gap: 3px;
+    }
+    /* Default: 3 cols */
+    .image-grid { grid-template-columns: repeat(3, 1fr); }
+    /* 2 images: side by side */
+    .image-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    /* 1 image: full */
+    .image-grid.cols-1 { grid-template-columns: 1fr; }
+    /* First image of 4+ spans 2 cols */
+    .image-grid.has-hero .img-item:first-child { grid-column: span 2; }
+
+    .img-item {
+      overflow: hidden;
+      background: #d8cdbf;
+      cursor: zoom-in;
+      position: relative;
+    }
+    .img-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      filter: saturate(.82);
+      transition: transform .6s cubic-bezier(0.25,0,0.15,1), filter .5s;
+      display: block;
+    }
+    .img-item:hover img { transform: scale(1.04); filter: saturate(1); }
+    /* Hero item taller */
+    .image-grid.has-hero .img-item:first-child img { aspect-ratio: 16/9; }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(18,14,11,.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+      backdrop-filter: blur(6px);
+    }
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lb-inner {
+      position: relative;
+      max-width: min(92vw, 1200px);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lb-img {
+      max-width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lb-caption {
+      margin-top: 16px;
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(242,236,227,.6);
+      text-align: center;
+    }
+    .lb-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(242,236,227,.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      color: rgba(242,236,227,.7);
+      transition: background .25s, color .25s;
+      cursor: pointer;
+      background: transparent;
+    }
+    .lb-close:hover { background: rgba(242,236,227,.1); color: var(--bg); }
+    .lb-prev, .lb-next {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(242,236,227,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      color: rgba(242,236,227,.7);
+      transition: background .25s;
+      cursor: pointer;
+      background: transparent;
+    }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+    .lb-prev:hover, .lb-next:hover { background: rgba(242,236,227,.12); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #141210;
+      padding: 26px 0;
+      margin-left: 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #7a6a5c;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--easing), transform .7s var(--easing); }
+    .reveal.in-view { opacity: 1; transform: none; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 1060px) {
+      :root { --rail: 0px; }
+      .side-rail { display: none; }
+      .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 80;
+        background: rgba(242,236,227,.94);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--line);
+        height: 64px;
+        padding: 0 20px;
+      }
+      .mobile-brand { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
+      .mobile-brand img { width: 28px; height: 42px; object-fit: contain; }
+      .mobile-back { font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 600; }
+      main { margin-left: 0; }
+      .page-header { padding: 96px 0 48px; }
+      .image-grid { grid-template-columns: repeat(2,1fr); }
+      .image-grid.has-hero .img-item:first-child { grid-column: span 2; }
+      .lb-prev { left: 8px; }
+      .lb-next { right: 8px; }
+    }
+    @media (max-width: 600px) {
+      .image-grid, .image-grid.cols-2 { grid-template-columns: 1fr; }
+      .image-grid.has-hero .img-item:first-child { grid-column: span 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ===== MOBILE POLISH V2 ===== */
+    html, body { overflow-x: hidden; }
+    .mobile-floating-whatsapp { display: none; }
+    @media (max-width: 1060px) {
+      body { padding-bottom: 82px; }
+      .container { width: calc(100% - 40px); }
+      .filter-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .filter-bar .container { flex-wrap: nowrap !important; width: max-content; min-width: calc(100% - 40px); padding-right: 20px; }
+      .filter-btn, .filter-label { white-space: nowrap; }
+      .group-header { display: grid; grid-template-columns: 1fr; gap: 8px; align-items: start; }
+      .group-count { margin-left: 0; }
+      .project-group { margin-bottom: 64px; }
+      .img-item img { aspect-ratio: 4 / 3; }
+      .mobile-floating-whatsapp {
+        display: inline-flex;
+        position: fixed;
+        z-index: 120;
+        left: 18px;
+        right: 18px;
+        bottom: 16px;
+        height: 54px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        box-shadow: 0 14px 40px rgba(20,18,16,.22);
+      }
+      .footer { padding-bottom: 100px; }
+    }
+    @media (max-width: 600px) {
+      .container { width: calc(100% - 32px); }
+      .page-header { padding: 92px 0 42px; }
+      .page-header h1 { font-size: clamp(42px, 14vw, 58px); }
+      .page-header p { font-size: 15px; }
+      .gallery-section { padding: 38px 0 86px; }
+      .group-title { font-size: 34px; }
+      .group-meta, .group-count { font-size: 10px; line-height: 1.4; }
+      .image-grid { gap: 5px; }
+      .lb-close { top: 14px; right: 14px; }
+      .lb-prev, .lb-next { top: auto; bottom: 20px; transform: none; background: rgba(242,236,227,.06); }
+      .lb-prev { left: 18px; }
+      .lb-next { right: 18px; }
+      .lb-img { max-height: 74vh; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- SIDE RAIL -->
+  <aside class="side-rail" aria-label="Navegação">
+    <a class="rail-brand" href="index.html" aria-label="Renan Almeida Arquitetura — página inicial">
+      <img src="assets/logo-mark.png" alt="" aria-hidden="true">
+      <span>Renan<br>Almeida</span>
+    </a>
+    <a class="rail-back" href="index.html">Voltar</a>
+    <a class="rail-cta" href="https://wa.me/5562982092000?text=Ol%C3%A1%2C%20Renan.%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">WhatsApp</a>
+  </aside>
+
+  <!-- MOBILE HEADER -->
+  <header class="mobile-header">
+    <div class="mobile-brand">
+      <img src="assets/logo-mark.png" alt="">
+      <span>Renan Almeida</span>
+    </div>
+    <a class="mobile-back" href="index.html">← Voltar</a>
+  </header>
+
+  <main>
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="container">
+        <p class="eyebrow">Portfólio completo</p>
+        <h1>Projetos e obras</h1>
+        <p>Residencial, interiores, fachadas e comercial — uma galeria geral com imagens de cada projeto, do conceito à obra.</p>
+      </div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <div class="container" style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+        <span class="filter-label">Filtrar:</span>
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="residencial">Residencial</button>
+        <button class="filter-btn" data-filter="comercial">Comercial</button>
+        <button class="filter-btn" data-filter="interiores">Interiores</button>
+        <button class="filter-btn" data-filter="fachada">Fachada</button>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <section class="gallery-section">
+      <div class="container">
+
+        <!-- ======================== -->
+        <!-- PROJETO 1: Fachada em Goiânia -->
+        <!-- ======================== -->
+        <div id="fachada-goiania" class="project-group reveal" data-category="residencial fachada">
+          <div class="group-header">
+            <h2 class="group-title">Fachada em Goiânia</h2>
+            <span class="group-meta">Residencial · fachada · 2026</span>
+            <span class="group-count">2 imagens</span>
+          </div>
+          <div class="image-grid cols-2">
+            <div class="img-item" data-src="assets/gallery/fachada-goiania/fachada-goiania-01.jpg" data-caption="Fachada em Goiânia — imagem 1">
+              <img src="assets/gallery/fachada-goiania/fachada-goiania-01.jpg" alt="Fachada em Goiânia — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/fachada-goiania/fachada-goiania-02.jpg" data-caption="Fachada em Goiânia — imagem 2">
+              <img src="assets/gallery/fachada-goiania/fachada-goiania-02.jpg" alt="Fachada em Goiânia — imagem 2" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 2: Portal do Sol Golf -->
+        <!-- ======================== -->
+        <div id="portal-sol-golf" class="project-group reveal" data-category="residencial">
+          <div class="group-header">
+            <h2 class="group-title">Portal do Sol Golf</h2>
+            <span class="group-meta">Residencial · lazer · 2022</span>
+            <span class="group-count">3 imagens</span>
+          </div>
+          <div class="image-grid">
+            <div class="img-item" data-src="assets/gallery/portal-sol-golf/portal-sol-golf-01.jpg" data-caption="Portal do Sol Golf — imagem 1">
+              <img src="assets/gallery/portal-sol-golf/portal-sol-golf-01.jpg" alt="Portal do Sol Golf — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/portal-sol-golf/portal-sol-golf-02.jpg" data-caption="Portal do Sol Golf — imagem 2">
+              <img src="assets/gallery/portal-sol-golf/portal-sol-golf-02.jpg" alt="Portal do Sol Golf — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/portal-sol-golf/portal-sol-golf-03.jpg" data-caption="Portal do Sol Golf — imagem 3">
+              <img src="assets/gallery/portal-sol-golf/portal-sol-golf-03.jpg" alt="Portal do Sol Golf — imagem 3" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 3: Apartamento modelo -->
+        <!-- ======================== -->
+        <div id="apartamento-modelo" class="project-group reveal" data-category="interiores residencial">
+          <div class="group-header">
+            <h2 class="group-title">Apartamento modelo</h2>
+            <span class="group-meta">Interiores · residencial · 2021</span>
+            <span class="group-count">1 imagem</span>
+          </div>
+          <div class="image-grid cols-1">
+            <div class="img-item" data-src="assets/gallery/apartamento-modelo/apartamento-modelo-01.jpg" data-caption="Apartamento modelo — imagem 1">
+              <img src="assets/gallery/apartamento-modelo/apartamento-modelo-01.jpg" alt="Apartamento modelo — imagem 1" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 4: Alcântara &amp; Carvalho -->
+        <!-- ======================== -->
+        <div id="alcantara-carvalho" class="project-group reveal" data-category="comercial interiores">
+          <div class="group-header">
+            <h2 class="group-title">Alcântara &amp; Carvalho</h2>
+            <span class="group-meta">Comercial · advocacia · 2020</span>
+            <span class="group-count">2 imagens</span>
+          </div>
+          <div class="image-grid cols-2">
+            <div class="img-item" data-src="assets/gallery/alcantara-carvalho/alcantara-carvalho-01.jpg" data-caption="Alcântara &amp; Carvalho — imagem 1">
+              <img src="assets/gallery/alcantara-carvalho/alcantara-carvalho-01.jpg" alt="Alcântara &amp; Carvalho — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/alcantara-carvalho/alcantara-carvalho-02.jpg" data-caption="Alcântara &amp; Carvalho — imagem 2">
+              <img src="assets/gallery/alcantara-carvalho/alcantara-carvalho-02.jpg" alt="Alcântara &amp; Carvalho — imagem 2" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 5: Sede institucional -->
+        <!-- ======================== -->
+        <div id="sede-institucional" class="project-group reveal" data-category="comercial interiores">
+          <div class="group-header">
+            <h2 class="group-title">Sede institucional</h2>
+            <span class="group-meta">Comercial · recepção · 2019</span>
+            <span class="group-count">2 imagens</span>
+          </div>
+          <div class="image-grid cols-2">
+            <div class="img-item" data-src="assets/gallery/sede-institucional/sede-institucional-01.jpg" data-caption="Sede institucional — imagem 1">
+              <img src="assets/gallery/sede-institucional/sede-institucional-01.jpg" alt="Sede institucional — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/sede-institucional/sede-institucional-02.jpg" data-caption="Sede institucional — imagem 2">
+              <img src="assets/gallery/sede-institucional/sede-institucional-02.jpg" alt="Sede institucional — imagem 2" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 6: Casa Edson -->
+        <!-- ======================== -->
+        <div id="casa-edson" class="project-group reveal" data-category="residencial">
+          <div class="group-header">
+            <h2 class="group-title">Casa Edson</h2>
+            <span class="group-meta">Residencial · projeto e obra · 2025</span>
+            <span class="group-count">4 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/casa-edson/casa-edson-01.jpg" data-caption="Casa Edson — imagem 1">
+              <img src="assets/gallery/casa-edson/casa-edson-01.jpg" alt="Casa Edson — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-edson/casa-edson-02.jpg" data-caption="Casa Edson — imagem 2">
+              <img src="assets/gallery/casa-edson/casa-edson-02.jpg" alt="Casa Edson — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-edson/casa-edson-03.jpg" data-caption="Casa Edson — imagem 3">
+              <img src="assets/gallery/casa-edson/casa-edson-03.jpg" alt="Casa Edson — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-edson/casa-edson-04.jpg" data-caption="Casa Edson — imagem 4">
+              <img src="assets/gallery/casa-edson/casa-edson-04.jpg" alt="Casa Edson — imagem 4" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 7: Casa em condomínio — Trindade -->
+        <!-- ======================== -->
+        <div id="casa-daniel" class="project-group reveal" data-category="residencial fachada">
+          <div class="group-header">
+            <h2 class="group-title">Casa em condomínio — Trindade</h2>
+            <span class="group-meta">Residencial · aprovação · 2025</span>
+            <span class="group-count">4 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/casa-daniel/casa-daniel-02.jpg" data-caption="Casa em condomínio — Trindade — fachada principal">
+              <img src="assets/gallery/casa-daniel/casa-daniel-02.jpg" alt="Casa em condomínio — Trindade — fachada principal" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-daniel/casa-daniel-01.jpg" data-caption="Casa em condomínio — Trindade — área de lazer">
+              <img src="assets/gallery/casa-daniel/casa-daniel-01.jpg" alt="Casa em condomínio — Trindade — área de lazer" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-daniel/casa-daniel-03.jpg" data-caption="Casa em condomínio — Trindade — dormitório">
+              <img src="assets/gallery/casa-daniel/casa-daniel-03.jpg" alt="Casa em condomínio — Trindade — dormitório" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-daniel/casa-daniel-04.jpg" data-caption="Casa em condomínio — Trindade — implantação frontal">
+              <img src="assets/gallery/casa-daniel/casa-daniel-04.jpg" alt="Casa em condomínio — Trindade — implantação frontal" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ======================== -->
+        <!-- PROJETO 8: Chácara — Hidrolândia -->
+        <!-- ======================== -->
+        <div id="chacara-pedro" class="project-group reveal" data-category="residencial">
+          <div class="group-header">
+            <h2 class="group-title">Chácara — Hidrolândia</h2>
+            <span class="group-meta">Residencial · chácara · 2024</span>
+            <span class="group-count">4 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/chacara-pedro/chacara-pedro-01.jpg" data-caption="Chácara — Hidrolândia — imagem 1">
+              <img src="assets/gallery/chacara-pedro/chacara-pedro-01.jpg" alt="Chácara — Hidrolândia — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/chacara-pedro/chacara-pedro-02.jpg" data-caption="Chácara — Hidrolândia — imagem 2">
+              <img src="assets/gallery/chacara-pedro/chacara-pedro-02.jpg" alt="Chácara — Hidrolândia — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/chacara-pedro/chacara-pedro-03.jpg" data-caption="Chácara — Hidrolândia — imagem 3">
+              <img src="assets/gallery/chacara-pedro/chacara-pedro-03.jpg" alt="Chácara — Hidrolândia — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/chacara-pedro/chacara-pedro-04.jpg" data-caption="Chácara — Hidrolândia — imagem 4">
+              <img src="assets/gallery/chacara-pedro/chacara-pedro-04.jpg" alt="Chácara — Hidrolândia — imagem 4" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 9: Residência Izabella -->
+        <!-- ======================== -->
+        <div id="izabella" class="project-group reveal" data-category="residencial fachada">
+          <div class="group-header">
+            <h2 class="group-title">Residência Izabella</h2>
+            <span class="group-meta">Residencial · exterior · 2025</span>
+            <span class="group-count">4 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/izabella/izabella-01.jpg" data-caption="Residência Izabella — imagem 1">
+              <img src="assets/gallery/izabella/izabella-01.jpg" alt="Residência Izabella — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/izabella/izabella-02.jpg" data-caption="Residência Izabella — imagem 2">
+              <img src="assets/gallery/izabella/izabella-02.jpg" alt="Residência Izabella — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/izabella/izabella-03.jpg" data-caption="Residência Izabella — imagem 3">
+              <img src="assets/gallery/izabella/izabella-03.jpg" alt="Residência Izabella — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/izabella/izabella-04.jpg" data-caption="Residência Izabella — imagem 4">
+              <img src="assets/gallery/izabella/izabella-04.jpg" alt="Residência Izabella — imagem 4" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 10: Prime Digital -->
+        <!-- ======================== -->
+        <div id="prime-digital" class="project-group reveal" data-category="comercial interiores">
+          <div class="group-header">
+            <h2 class="group-title">Prime Digital</h2>
+            <span class="group-meta">Comercial · interiores · 2020</span>
+            <span class="group-count">2 imagens</span>
+          </div>
+          <div class="image-grid cols-2">
+            <div class="img-item" data-src="assets/gallery/prime-digital/prime-digital-06.jpg" data-caption="Prime Digital — imagem IA 1">
+              <img src="assets/gallery/prime-digital/prime-digital-06.jpg" alt="Prime Digital — imagem IA 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/prime-digital/prime-digital-07.jpg" data-caption="Prime Digital — imagem IA 2">
+              <img src="assets/gallery/prime-digital/prime-digital-07.jpg" alt="Prime Digital — imagem IA 2" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ======================== -->
+        <!-- PROJETO 11: Chácara Valdair -->
+        <!-- ======================== -->
+        <div id="valdair" class="project-group reveal" data-category="residencial interiores">
+          <div class="group-header">
+            <h2 class="group-title">Chácara Valdair</h2>
+            <span class="group-meta">Residencial · reforma · antes e depois</span>
+            <span class="group-count">8 imagens</span>
+          </div>
+
+          <div class="gallery-subhead">Antes · fotos reais</div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-01.jpg" data-caption="Chácara Valdair — antes — imagem 1">
+              <img src="assets/gallery/valdair/valdair-01.jpg" alt="Chácara Valdair — antes — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-02.jpg" data-caption="Chácara Valdair — antes — imagem 2">
+              <img src="assets/gallery/valdair/valdair-02.jpg" alt="Chácara Valdair — antes — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-03.jpg" data-caption="Chácara Valdair — antes — imagem 3">
+              <img src="assets/gallery/valdair/valdair-03.jpg" alt="Chácara Valdair — antes — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-04.jpg" data-caption="Chácara Valdair — antes — imagem 4">
+              <img src="assets/gallery/valdair/valdair-04.jpg" alt="Chácara Valdair — antes — imagem 4" loading="lazy" decoding="async">
+            </div>
+          </div>
+
+          <div class="gallery-subhead">Depois · maquete eletrônica</div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-06.jpg" data-caption="Chácara Valdair — depois — varanda integrada">
+              <img src="assets/gallery/valdair/valdair-06.jpg" alt="Chácara Valdair — depois — varanda integrada" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-05.jpg" data-caption="Chácara Valdair — depois — área gourmet">
+              <img src="assets/gallery/valdair/valdair-05.jpg" alt="Chácara Valdair — depois — área gourmet" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-07.jpg" data-caption="Chácara Valdair — depois — varanda">
+              <img src="assets/gallery/valdair/valdair-07.jpg" alt="Chácara Valdair — depois — varanda" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/valdair/valdair-08.jpg" data-caption="Chácara Valdair — depois — piscina">
+              <img src="assets/gallery/valdair/valdair-08.jpg" alt="Chácara Valdair — depois — piscina" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ======================== -->
+        <!-- PROJETO 12: Fachada Matheus Candote -->
+        <!-- ======================== -->
+        <div id="matheus-candote" class="project-group reveal" data-category="residencial fachada">
+          <div class="group-header">
+            <h2 class="group-title">Fachada Matheus Candote</h2>
+            <span class="group-meta">Residencial · fachada · 2025</span>
+            <span class="group-count">2 imagens</span>
+          </div>
+          <div class="image-grid cols-2">
+            <div class="img-item" data-src="assets/gallery/matheus-candote/matheus-candote-01.jpg" data-caption="Fachada Matheus Candote — imagem 1">
+              <img src="assets/gallery/matheus-candote/matheus-candote-01.jpg" alt="Fachada Matheus Candote — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/matheus-candote/matheus-candote-02.jpg" data-caption="Fachada Matheus Candote — imagem 2">
+              <img src="assets/gallery/matheus-candote/matheus-candote-02.jpg" alt="Fachada Matheus Candote — imagem 2" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 13: Escritório Adelso -->
+        <!-- ======================== -->
+        <div id="escritorio-adelso" class="project-group reveal" data-category="comercial interiores">
+          <div class="group-header">
+            <h2 class="group-title">Escritório Adelso</h2>
+            <span class="group-meta">Comercial · escritório · obra e interiores</span>
+            <span class="group-count">24 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-01.jpg" data-caption="Escritório Adelso — imagem 1">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-01.jpg" alt="Escritório Adelso — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-02.jpg" data-caption="Escritório Adelso — imagem 2">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-02.jpg" alt="Escritório Adelso — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-03.jpg" data-caption="Escritório Adelso — imagem 3">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-03.jpg" alt="Escritório Adelso — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-04.jpg" data-caption="Escritório Adelso — imagem 4">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-04.jpg" alt="Escritório Adelso — imagem 4" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-05.jpg" data-caption="Escritório Adelso — imagem 5">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-05.jpg" alt="Escritório Adelso — imagem 5" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-06.jpg" data-caption="Escritório Adelso — imagem 6">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-06.jpg" alt="Escritório Adelso — imagem 6" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-07.jpg" data-caption="Escritório Adelso — imagem 7">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-07.jpg" alt="Escritório Adelso — imagem 7" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-08.jpg" data-caption="Escritório Adelso — imagem 8">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-08.jpg" alt="Escritório Adelso — imagem 8" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-09.jpg" data-caption="Escritório Adelso — imagem 9">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-09.jpg" alt="Escritório Adelso — imagem 9" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-10.jpg" data-caption="Escritório Adelso — imagem 10">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-10.jpg" alt="Escritório Adelso — imagem 10" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-11.jpg" data-caption="Escritório Adelso — imagem 11">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-11.jpg" alt="Escritório Adelso — imagem 11" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-12.jpg" data-caption="Escritório Adelso — imagem 12">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-12.jpg" alt="Escritório Adelso — imagem 12" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-13.jpg" data-caption="Escritório Adelso — imagem 13">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-13.jpg" alt="Escritório Adelso — imagem 13" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-14.jpg" data-caption="Escritório Adelso — imagem 14">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-14.jpg" alt="Escritório Adelso — imagem 14" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-15.jpg" data-caption="Escritório Adelso — imagem 15">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-15.jpg" alt="Escritório Adelso — imagem 15" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-16.jpg" data-caption="Escritório Adelso — imagem 16">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-16.jpg" alt="Escritório Adelso — imagem 16" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-17.jpg" data-caption="Escritório Adelso — imagem 17">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-17.jpg" alt="Escritório Adelso — imagem 17" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-18.jpg" data-caption="Escritório Adelso — imagem 18">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-18.jpg" alt="Escritório Adelso — imagem 18" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-19.jpg" data-caption="Escritório Adelso — imagem 19">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-19.jpg" alt="Escritório Adelso — imagem 19" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-20.jpg" data-caption="Escritório Adelso — imagem 20">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-20.jpg" alt="Escritório Adelso — imagem 20" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-21.jpg" data-caption="Escritório Adelso — imagem 21">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-21.jpg" alt="Escritório Adelso — imagem 21" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-22.jpg" data-caption="Escritório Adelso — imagem 22">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-22.jpg" alt="Escritório Adelso — imagem 22" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-23.jpg" data-caption="Escritório Adelso — imagem 23">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-23.jpg" alt="Escritório Adelso — imagem 23" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/escritorio-adelso/escritorio-adelso-24.jpg" data-caption="Escritório Adelso — imagem 24">
+              <img src="assets/gallery/escritorio-adelso/escritorio-adelso-24.jpg" alt="Escritório Adelso — imagem 24" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 14: Casa Paulo e Rosane -->
+        <!-- ======================== -->
+        <div id="casa-paulo-rosane" class="project-group reveal" data-category="residencial fachada">
+          <div class="group-header">
+            <h2 class="group-title">Casa Paulo e Rosane</h2>
+            <span class="group-meta">Residencial · reforma · antes e depois</span>
+            <span class="group-count">6 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-01.jpg" data-caption="Casa Paulo e Rosane — imagem 1">
+              <img src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-01.jpg" alt="Casa Paulo e Rosane — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-02.jpg" data-caption="Casa Paulo e Rosane — imagem 2">
+              <img src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-02.jpg" alt="Casa Paulo e Rosane — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-03.jpg" data-caption="Casa Paulo e Rosane — imagem 3">
+              <img src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-03.jpg" alt="Casa Paulo e Rosane — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-04.jpg" data-caption="Casa Paulo e Rosane — imagem 4">
+              <img src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-04.jpg" alt="Casa Paulo e Rosane — imagem 4" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-05.jpg" data-caption="Casa Paulo e Rosane — imagem 5">
+              <img src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-05.jpg" alt="Casa Paulo e Rosane — imagem 5" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-06.jpg" data-caption="Casa Paulo e Rosane — imagem 6">
+              <img src="assets/gallery/casa-paulo-rosane/casa-paulo-rosane-06.jpg" alt="Casa Paulo e Rosane — imagem 6" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 15: Casa Edinilson -->
+        <!-- ======================== -->
+        <div id="casa-edinilson" class="project-group reveal" data-category="residencial">
+          <div class="group-header">
+            <h2 class="group-title">Casa Edinilson</h2>
+            <span class="group-meta">Residencial · projeto</span>
+            <span class="group-count">4 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/casa-edinilson/casa-edinilson-01.jpg" data-caption="Casa Edinilson — imagem 1">
+              <img src="assets/gallery/casa-edinilson/casa-edinilson-01.jpg" alt="Casa Edinilson — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-edinilson/casa-edinilson-02.jpg" data-caption="Casa Edinilson — imagem 2">
+              <img src="assets/gallery/casa-edinilson/casa-edinilson-02.jpg" alt="Casa Edinilson — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-edinilson/casa-edinilson-03.jpg" data-caption="Casa Edinilson — imagem 3">
+              <img src="assets/gallery/casa-edinilson/casa-edinilson-03.jpg" alt="Casa Edinilson — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-edinilson/casa-edinilson-04.jpg" data-caption="Casa Edinilson — imagem 4">
+              <img src="assets/gallery/casa-edinilson/casa-edinilson-04.jpg" alt="Casa Edinilson — imagem 4" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- PROJETO 16: Casa Mercedes -->
+        <!-- ======================== -->
+        <div id="casa-mercedes" class="project-group reveal" data-category="residencial interiores">
+          <div class="group-header">
+            <h2 class="group-title">Casa Mercedes</h2>
+            <span class="group-meta">Residencial · reforma · antes e depois</span>
+            <span class="group-count">6 imagens</span>
+          </div>
+          <div class="image-grid has-hero">
+            <div class="img-item" data-src="assets/gallery/casa-mercedes/casa-mercedes-01.jpg" data-caption="Casa Mercedes — imagem 1">
+              <img src="assets/gallery/casa-mercedes/casa-mercedes-01.jpg" alt="Casa Mercedes — imagem 1" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-mercedes/casa-mercedes-02.jpg" data-caption="Casa Mercedes — imagem 2">
+              <img src="assets/gallery/casa-mercedes/casa-mercedes-02.jpg" alt="Casa Mercedes — imagem 2" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-mercedes/casa-mercedes-03.jpg" data-caption="Casa Mercedes — imagem 3">
+              <img src="assets/gallery/casa-mercedes/casa-mercedes-03.jpg" alt="Casa Mercedes — imagem 3" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-mercedes/casa-mercedes-04.jpg" data-caption="Casa Mercedes — imagem 4">
+              <img src="assets/gallery/casa-mercedes/casa-mercedes-04.jpg" alt="Casa Mercedes — imagem 4" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-mercedes/casa-mercedes-05.jpg" data-caption="Casa Mercedes — imagem 5">
+              <img src="assets/gallery/casa-mercedes/casa-mercedes-05.jpg" alt="Casa Mercedes — imagem 5" loading="lazy" decoding="async">
+            </div>
+            <div class="img-item" data-src="assets/gallery/casa-mercedes/casa-mercedes-06.jpg" data-caption="Casa Mercedes — imagem 6">
+              <img src="assets/gallery/casa-mercedes/casa-mercedes-06.jpg" alt="Casa Mercedes — imagem 6" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA final -->
+        <div style="margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--line); text-align: center;">
+          <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size: clamp(26px,3vw,42px); font-weight:400; letter-spacing:-.02em; color:var(--ink); margin-bottom: 28px;">Tem um projeto em mente?</p>
+          <a class="cta-btn" href="https://wa.me/5562982092000?text=Ol%C3%A1%2C%20Renan.%20Vim%20pela%20galeria%20do%20site%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">Falar com o arquiteto</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Renan Almeida Arquitetura</span>
+      <span>arquitetorenan.com</span>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+    <button class="lb-close" id="lbClose" aria-label="Fechar">×</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <div class="lb-inner">
+      <img class="lb-img" id="lbImg" src="" alt="">
+      <p class="lb-caption" id="lbCaption"></p>
+    </div>
+    <button class="lb-next" id="lbNext" aria-label="Próxima">›</button>
+  </div>
+
+  <style>
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 16px 36px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: var(--ink);
+      color: var(--bg);
+      border: 1px solid transparent;
+      transition: background .3s, transform .3s;
+    }
+    .cta-btn:hover { background: #3e3730; transform: translateY(-2px); }
+
+    /* ===== MOBILE POLISH V2 ===== */
+    html, body { overflow-x: hidden; }
+    .mobile-floating-whatsapp { display: none; }
+    @media (max-width: 1060px) {
+      body { padding-bottom: 82px; }
+      .container { width: calc(100% - 40px); }
+      .filter-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .filter-bar .container { flex-wrap: nowrap !important; width: max-content; min-width: calc(100% - 40px); padding-right: 20px; }
+      .filter-btn, .filter-label { white-space: nowrap; }
+      .group-header { display: grid; grid-template-columns: 1fr; gap: 8px; align-items: start; }
+      .group-count { margin-left: 0; }
+      .project-group { margin-bottom: 64px; }
+      .img-item img { aspect-ratio: 4 / 3; }
+      .mobile-floating-whatsapp {
+        display: inline-flex;
+        position: fixed;
+        z-index: 120;
+        left: 18px;
+        right: 18px;
+        bottom: 16px;
+        height: 54px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        box-shadow: 0 14px 40px rgba(20,18,16,.22);
+      }
+      .footer { padding-bottom: 100px; }
+    }
+    @media (max-width: 600px) {
+      .container { width: calc(100% - 32px); }
+      .page-header { padding: 92px 0 42px; }
+      .page-header h1 { font-size: clamp(42px, 14vw, 58px); }
+      .page-header p { font-size: 15px; }
+      .gallery-section { padding: 38px 0 86px; }
+      .group-title { font-size: 34px; }
+      .group-meta, .group-count { font-size: 10px; line-height: 1.4; }
+      .image-grid { gap: 5px; }
+      .lb-close { top: 14px; right: 14px; }
+      .lb-prev, .lb-next { top: auto; bottom: 20px; transform: none; background: rgba(242,236,227,.06); }
+      .lb-prev { left: 18px; }
+      .lb-next { right: 18px; }
+      .lb-img { max-height: 74vh; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+
+  </style>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    }
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const groups = document.querySelectorAll('.project-group');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        groups.forEach(g => {
+          const cat = g.dataset.category || '';
+          g.hidden = f !== 'all' && !cat.includes(f);
+        });
+      });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    let allItems = [], currentIdx = 0;
+
+    function openLightbox(items, idx) {
+      allItems = items;
+      currentIdx = idx;
+      showImage(currentIdx);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function showImage(idx) {
+      const item = allItems[idx];
+      lbImg.src = item.dataset.src || item.querySelector('img').src;
+      lbImg.alt = item.querySelector('img').alt;
+      lbCaption.textContent = item.dataset.caption || '';
+    }
+
+    document.querySelectorAll('.img-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const group = item.closest('.project-group');
+        const items = Array.from(group.querySelectorAll('.img-item'));
+        const idx = items.indexOf(item);
+        openLightbox(items, idx);
+      });
+    });
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    document.getElementById('lbPrev').addEventListener('click', e => {
+      e.stopPropagation();
+      currentIdx = (currentIdx - 1 + allItems.length) % allItems.length;
+      showImage(currentIdx);
+    });
+    document.getElementById('lbNext').addEventListener('click', e => {
+      e.stopPropagation();
+      currentIdx = (currentIdx + 1) % allItems.length;
+      showImage(currentIdx);
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') { currentIdx = (currentIdx - 1 + allItems.length) % allItems.length; showImage(currentIdx); }
+      if (e.key === 'ArrowRight') { currentIdx = (currentIdx + 1) % allItems.length; showImage(currentIdx); }
+    });
+  </script>
+  <a class="mobile-floating-whatsapp" href="https://wa.me/5562982092000?text=Ol%C3%A1%2C%20Renan.%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">Falar pelo WhatsApp</a>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arquitetorenan.com/sitemap.xml
